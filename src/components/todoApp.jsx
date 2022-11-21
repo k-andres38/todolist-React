@@ -9,18 +9,24 @@ function TodoApp() {
    
 
     const handleChange=(e)=>{
+        
         const value=e.target.value;
+        
        setTitle(value)
        
     }
 
     const handleSubmit=(e)=>{
         e.preventDefault();
+
+        
+
         const newTodo={
             id:crypto.randomUUID(),
             title:title,
             completed:false
         }
+        if(!newTodo.title.trim())return;
         const temp=[...todos];
         temp.unshift(newTodo)
         setTodos(temp)   
@@ -40,7 +46,7 @@ function TodoApp() {
    }
 
    const handleDelete=(id)=>{
-    console.log(id)
+    
     const temp=todos.filter(item=>item.id!==id);
     setTodos(temp)
     
